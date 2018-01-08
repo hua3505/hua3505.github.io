@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="WolfXu, Blog, Hexo, NexT" />
+  <meta name="keywords" content="Android,源码解析," />
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="曾记否，到中流击水，浪遏飞舟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wolf Xu">
-<meta property="og:url" content="http://wolfxu.com/index.html">
+<meta name="description" content="学习过程跟着鸿洋_的博客的思路，结合7.0的源码进行学习，同时参考其他好的文章。 概述主要涉及四个类：Looper、Handler、Message、MessageQueue。Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。 Looper1. Looper类">
+<meta name="keywords" content="Android,源码解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习记录】Android深入学习之消息处理机制">
+<meta property="og:url" content="http://wolfxu.com/2018/01/08/【学习记录】Android深入学习之消息处理机制/index.html">
 <meta property="og:site_name" content="Wolf Xu">
-<meta property="og:description" content="曾记否，到中流击水，浪遏飞舟">
+<meta property="og:description" content="学习过程跟着鸿洋_的博客的思路，结合7.0的源码进行学习，同时参考其他好的文章。 概述主要涉及四个类：Looper、Handler、Message、MessageQueue。Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。 Looper1. Looper类">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-beb18a631eb164d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T09:43:05.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wolf Xu">
-<meta name="twitter:description" content="曾记否，到中流击水，浪遏飞舟">
+<meta name="twitter:title" content="【学习记录】Android深入学习之消息处理机制">
+<meta name="twitter:description" content="学习过程跟着鸿洋_的博客的思路，结合7.0的源码进行学习，同时参考其他好的文章。 概述主要涉及四个类：Looper、Handler、Message、MessageQueue。Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。 Looper1. Looper类">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/196189-beb18a631eb164d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://wolfxu.com/"/>
+  <link rel="canonical" href="http://wolfxu.com/2018/01/08/【学习记录】Android深入学习之消息处理机制/"/>
 
 
 
 
 
-  <title>Wolf Xu</title>
+  <title>【学习记录】Android深入学习之消息处理机制 | Wolf Xu</title>
   
 
 
@@ -143,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -249,9 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/08/【学习记录】Android深入学习之消息处理机制/" itemprop="url">【学习记录】Android深入学习之消息处理机制</a></h1>
+          <h1 class="post-title" itemprop="name headline">【学习记录】Android深入学习之消息处理机制</h1>
         
 
         <div class="post-meta">
@@ -312,9 +313,7 @@
       
 
       
-        
-          
-            <h1 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h1><p>跟着鸿洋_的博客的思路，结合7.0的源码进行学习，同时参考其他好的文章。</p>
+        <h1 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h1><p>跟着鸿洋_的博客的思路，结合7.0的源码进行学习，同时参考其他好的文章。</p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>主要涉及四个类：Looper、Handler、Message、MessageQueue。<br>Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。</p>
 <h1 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h1><h3 id="1-Looper类的作用"><a href="#1-Looper类的作用" class="headerlink" title="1. Looper类的作用"></a>1. Looper类的作用</h3><p>源码的类注释中已经把Looper类的作用和使用方法说得很清楚了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Class used to run a message loop for a thread.  Threads by default do</span></span><br><span class="line"><span class="comment">  * not have a message loop associated with them; to create one, call</span></span><br><span class="line"><span class="comment">  * &#123;<span class="doctag">@link</span> #prepare&#125; in the thread that is to run the loop, and then</span></span><br><span class="line"><span class="comment">  * &#123;<span class="doctag">@link</span> #loop&#125; to have it process messages until the loop is stopped.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;Most interaction with a message loop is through the</span></span><br><span class="line"><span class="comment">  * &#123;<span class="doctag">@link</span> Handler&#125; class.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;This is a typical example of the implementation of a Looper thread,</span></span><br><span class="line"><span class="comment">  * using the separation of &#123;<span class="doctag">@link</span> #prepare&#125; and &#123;<span class="doctag">@link</span> #loop&#125; to create an</span></span><br><span class="line"><span class="comment">  * initial Handler to communicate with the Looper.</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * &lt;pre&gt;</span></span><br><span class="line"><span class="comment">  *  class LooperThread extends Thread &#123;</span></span><br><span class="line"><span class="comment">  *      public Handler mHandler;</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  *      public void run() &#123;</span></span><br><span class="line"><span class="comment">  *          Looper.prepare();</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  *          mHandler = new Handler() &#123;</span></span><br><span class="line"><span class="comment">  *              public void handleMessage(Message msg) &#123;</span></span><br><span class="line"><span class="comment">  *                  // process incoming messages here</span></span><br><span class="line"><span class="comment">  *              &#125;</span></span><br><span class="line"><span class="comment">  *          &#125;;</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  *          Looper.loop();</span></span><br><span class="line"><span class="comment">  *      &#125;</span></span><br><span class="line"><span class="comment">  *  &#125;&lt;/pre&gt;</span></span><br><span class="line"><span class="comment">  */</span></span><br></pre></td></tr></table></figure></p>
 <p>Looper类的作用就是让线程进行消息循环。如果一个线程需要消息循环，只需要调用Looper类的prepare方法和loop方法就可以了。因此，Looper类中我们主要关注prepare和loop这两个方法，它们都是static方法。</p>
@@ -441,8 +440,6 @@
 <li><a href="http://blog.csdn.net/chwan_gogogo/article/details/46953549" target="_blank" rel="noopener">[M0]Android Native层Looper详解</a></li>
 </ol>
 
-          
-        
       
     </div>
     
@@ -457,337 +454,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wolfxu.com/2018/01/08/Unity开发中的常用操作和注意事项/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wolf Xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wolf Xu">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/08/Unity开发中的常用操作和注意事项/" itemprop="url">Unity开发中的常用操作和注意事项</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T17:03:37+08:00">
-                2018-01-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/08/Unity开发中的常用操作和注意事项/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/08/Unity开发中的常用操作和注意事项/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/源码解析/" rel="tag"># 源码解析</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="场景视角变换"><a href="#场景视角变换" class="headerlink" title="场景视角变换"></a>场景视角变换</h3><p>平移：鼠标切换到手型，按下左键拖动<br>缩放：鼠标滚轮滚动；或者按下alt+鼠标右键，然后移动鼠标<br>围绕观察点旋转：按下alt+鼠标左键，然后移动鼠标<br>观察者旋转：按下鼠标右键，然后移动鼠标<br>聚焦到物体：选中物体后按F；或者在hierarchy中双击要聚焦的物体</p>
-<h3 id="编辑器布局切换"><a href="#编辑器布局切换" class="headerlink" title="编辑器布局切换"></a>编辑器布局切换</h3><p>在编辑器上方菜单栏的Windows-&gt;Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存。预设的里面我用的比较多的是<em>Default</em>和<em>2 by 3</em>。Default布局是中间上方有一个很大的场景窗口，可以通过标签页切换到Game窗口；2 by 3是左边分成上下两块，分别显示场景窗口和Game窗口。</p>
-<h3 id="VisualStudio"><a href="#VisualStudio" class="headerlink" title="VisualStudio"></a>VisualStudio</h3><p>首先要安装Visual Studio Tools for Unity。Unity在安装的时候就在VisualStudio中安装了这个插件，如果没有的话可以在VS的插件管理器（Tools-&gt;Extensions and Updates）中下载安装，或者去<a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=tools&amp;f%5B1%5D.Type=Tag&amp;f%5B1%5D.Value=unity%203D%20script%20c%23%20debug%20breakpoint" target="_blank" rel="noopener">msdn</a>上下载。</p>
-<p>查看unity文档：Help-&gt;Unity API Reference，默认快捷键是 Ctrl + Alt +M,Ctrl + H。会在VS中打开Unity的在线文档，并查找当前选中的内容。<br>快速实现MonoBehaviour中的方法：鼠标右键-&gt;Implement MonoBehaviours(快捷键：Ctrl + Shift + M)。列出MonoBehaviour中所有可实现的方法，通过勾选添加。<br>查看MonoBehaviour中的方法：鼠标右键-&gt;Quick MonoBehaviours（快捷键：Ctrl+shift +Q）。查找MonoBehaviour中可实现的方法。<br>调试脚本：点击Attach to Unity，或者直接按F5连接到Unity上，在Unity中运行游戏，就可以开始断点调试了。</p>
-<h3 id="注意：不要在play模式下进行编辑"><a href="#注意：不要在play模式下进行编辑" class="headerlink" title="注意：不要在play模式下进行编辑"></a>注意：不要在play模式下进行编辑</h3><p>play模式下场景中的修改（场景中创建物体、修改物体属性等）都是临时的，退出play模式时就会还原。play模式下只适合用来做测试性的修改，而不应该在play模式下编辑。<br>问题来了，如何避免不小心在play模式下编辑的情况？<br>可以让Unity在play模式下显示不一样的颜色来提醒自己。在Preference的Colors中修改Playmode tint即可。效果见下图。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/196189-715f1865280266cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="修改Unity在Play模式下的颜色" title="修改Unity在Play模式下的颜色"></p>
-<h3 id="版本管理："><a href="#版本管理：" class="headerlink" title="版本管理："></a>版本管理：</h3><p>参考：<a href="http://www.cnblogs.com/CodeCabin/p/3960453.html" target="_blank" rel="noopener">在Unity项目中使用Git</a></p>
-<ol>
-<li>在 Edit-&gt;Project Settings-&gt;Editor-&gt;Version Control Mode 中选择 Visible Meta files。</li>
-<li>在 Edit-&gt;Project Settings-&gt;Editor-&gt;Asset Serialization Mode 中选择 Force Text。</li>
-<li>添加gitignore。</li>
-</ol>
-<p>下面是Unity官方教程里面给出的gitignore</p>
-<pre><code>=============== 
-Unity generated
-===============
-Temp/
-Library/
-
-=====================================
-Visual Studio / MonoDevelop generated
-=====================================
-ExportedObj/
-obj/
-*.svd
-*.userprefs
-/*.csproj
-*.pidb
-*.suo
-/*.sln
-*.user
-*.unityproj
-*.booproj
-
-============
-OS generated
-============
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wolfxu.com/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wolf Xu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wolf Xu">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/" itemprop="url">如何为NTFS文件系统的移动硬盘划分一个Mac的分区</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T14:14:16+08:00">
-                2018-01-03
-              </time>
+              <a href="/2018/01/08/Unity开发中的常用操作和注意事项/" rel="next" title="Unity开发中的常用操作和注意事项">
+                <i class="fa fa-chevron-left"></i> Unity开发中的常用操作和注意事项
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h3 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h3><p>事情是这样的，我准备编译android源码，但是我的MacPro只有256G的空间，而源码编译大概要100G左右的空间。于是，我从箱底翻出500G的硬盘。只有一个分区，NTFS文件系统的，编译源码需要Mac OS扩展（区分大小写，日志式）。但里面还有300多G的资料、软件、游戏之类的，直接格式化肯定不行，备份又麻烦。所以我准备在移动硬盘上划分一个新的分区，格式化成mac需要的格式。</p>
-<h3 id="2-压缩原有分区并创建Mac-OS-扩展分区"><a href="#2-压缩原有分区并创建Mac-OS-扩展分区" class="headerlink" title="2. 压缩原有分区并创建Mac OS 扩展分区"></a>2. 压缩原有分区并创建Mac OS 扩展分区</h3><h5 id="使用的工具"><a href="#使用的工具" class="headerlink" title="使用的工具"></a>使用的工具</h5><ul>
-<li>Windows自带的磁盘管理工具</li>
-<li>Mac自带的磁盘管理工具</li>
-</ul>
-<h5 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h5><ol>
-<li>利用Windows自带的磁盘管理工具，压缩移动硬盘上原有的分区。据说编译源码100G的空间够了，于是我压缩出了100G左右的空间。</li>
-<li>利用Windows自带的磁盘管理工具，创建新的分区（使用压缩出的空间）。这里可能因为我的移动硬盘原有的分区是NTFS的，所以无法在Mac上对移动硬盘进行分区，只能先在Windows上分区。</li>
-<li>利用Mac自带的磁盘管理工具，格式化新建的分区。<br><img src="http://upload-images.jianshu.io/upload_images/196189-39457ca875c263d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分区完成后" title="分区完成后"></li>
-</ol>
-<h3 id="3-扩展MacOSX分区的大小"><a href="#3-扩展MacOSX分区的大小" class="headerlink" title="3. 扩展MacOSX分区的大小"></a>3. 扩展MacOSX分区的大小</h3><p>分区完成之后，下载Android源码进行编译，艰难绕过各种坑之后，在编译到80%时失败了，空间不足！！！于是只能想办法再给MacOSX分区扩展一点空间。</p>
-<h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><ul>
-<li>Windows自带的磁盘管理工具</li>
-<li>iPartition（Mac上的一个第三方磁盘分区工具）</li>
-</ul>
-<h5 id="具体步骤-1"><a href="#具体步骤-1" class="headerlink" title="具体步骤"></a>具体步骤</h5><ol>
-<li>利用Windows自带的磁盘管理工具，压缩NTFS分区的空间。空间挤挤总是有的，又压缩出50G空间。</li>
-<li>利用iPartition工具，把压缩出的50G空间合并到MacOSX分区中。这一步尝试了Windows的磁盘管理工具、Mac的磁盘管理工具还有Windows上的分区助手都没法搞。最后用iPartition轻松搞定。<br><img src="http://upload-images.jianshu.io/upload_images/196189-3729bcfa549834ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="空间扩展完成后" title="空间扩展完成后"></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -797,10 +495,11 @@ Thumbs.db
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -808,6 +507,20 @@ Thumbs.db
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -828,8 +541,17 @@ Thumbs.db
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -880,6 +602,22 @@ Thumbs.db
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习过程"><span class="nav-number">1.</span> <span class="nav-text">学习过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Looper"><span class="nav-number">3.</span> <span class="nav-text">Looper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Looper类的作用"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Looper类的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-prepare-方法"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. prepare()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-loop-方法"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. loop()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Looper类小结"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. Looper类小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Handler"><span class="nav-number">4.</span> <span class="nav-text">Handler</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Handler类的作用"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Handler类的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-构造方法"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-sendMessage方法"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. sendMessage方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-post方法"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. post方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-dispatchMessage方法"><span class="nav-number">4.0.5.</span> <span class="nav-text">5. dispatchMessage方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Handler类小结"><span class="nav-number">4.0.6.</span> <span class="nav-text">6. Handler类小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MessageQueue"><span class="nav-number">5.</span> <span class="nav-text">MessageQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-消息加入队列"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. 消息加入队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-从队列中获取下一条消息"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. 从队列中获取下一条消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Barrier和异步消息"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">Barrier和异步消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nativePollOnce方法"><span class="nav-number">5.0.2.2.</span> <span class="nav-text">nativePollOnce方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1022,6 +760,10 @@ Thumbs.db
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1039,6 +781,18 @@ Thumbs.db
       <script id="dsq-count-scr" src="https://wolfxu.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wolfxu.com/2018/01/08/【学习记录】Android深入学习之消息处理机制/';
+          this.page.identifier = '2018/01/08/【学习记录】Android深入学习之消息处理机制/';
+          this.page.title = '【学习记录】Android深入学习之消息处理机制';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wolfxu.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
