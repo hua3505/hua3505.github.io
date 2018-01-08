@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="WolfXu, Blog, Hexo, NexT" />
+  <meta name="keywords" content="Android,Unity," />
 
 
 
@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="1. 背景事情是这样的，我准备编译android源码，但是我的MacPro只有256G的空间，而源码编译大概要100G左右的空间。于是，我从箱底翻出500G的硬盘。只有一个分区，NTFS文件系统的，编译源码需要Mac OS扩展（区分大小写，日志式）。但里面还有300多G的资料、软件、游戏之类的，直接格式化肯定不行，备份又麻烦。所以我准备在移动硬盘上划分一个新的分区，格式化成mac需要的格式。 2.">
+<meta name="description" content="现象在用 Unity 编译 Android 平台的应用时，遇到 Unable to list target platforms 的问题。  详细错误描述如下：  Error:Invalid command androidUnityEditor.BuildPlayerWindow:BuildPlayerAndRun() CommandInvokationFailure: Unable to list">
+<meta name="keywords" content="Android,Unity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何为NTFS文件系统的移动硬盘划分一个Mac的分区">
-<meta property="og:url" content="http://wolfxu.com/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/index.html">
+<meta property="og:title" content="Unity编译时找不到AndroidSDK的问题 | Unable to list target platforms">
+<meta property="og:url" content="http://wolfxu.com/2018/01/08/Unity编译时找不到AndroidSDK的问题/index.html">
 <meta property="og:site_name" content="Wolf Xu">
-<meta property="og:description" content="1. 背景事情是这样的，我准备编译android源码，但是我的MacPro只有256G的空间，而源码编译大概要100G左右的空间。于是，我从箱底翻出500G的硬盘。只有一个分区，NTFS文件系统的，编译源码需要Mac OS扩展（区分大小写，日志式）。但里面还有300多G的资料、软件、游戏之类的，直接格式化肯定不行，备份又麻烦。所以我准备在移动硬盘上划分一个新的分区，格式化成mac需要的格式。 2.">
+<meta property="og:description" content="现象在用 Unity 编译 Android 平台的应用时，遇到 Unable to list target platforms 的问题。  详细错误描述如下：  Error:Invalid command androidUnityEditor.BuildPlayerWindow:BuildPlayerAndRun() CommandInvokationFailure: Unable to list">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-39457ca875c263d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-3729bcfa549834ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-03T06:38:36.993Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-9153d06c787e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-5b2c7c2750b37566.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-287b910ccfd1f58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T10:15:16.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何为NTFS文件系统的移动硬盘划分一个Mac的分区">
-<meta name="twitter:description" content="1. 背景事情是这样的，我准备编译android源码，但是我的MacPro只有256G的空间，而源码编译大概要100G左右的空间。于是，我从箱底翻出500G的硬盘。只有一个分区，NTFS文件系统的，编译源码需要Mac OS扩展（区分大小写，日志式）。但里面还有300多G的资料、软件、游戏之类的，直接格式化肯定不行，备份又麻烦。所以我准备在移动硬盘上划分一个新的分区，格式化成mac需要的格式。 2.">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/196189-39457ca875c263d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Unity编译时找不到AndroidSDK的问题 | Unable to list target platforms">
+<meta name="twitter:description" content="现象在用 Unity 编译 Android 平台的应用时，遇到 Unable to list target platforms 的问题。  详细错误描述如下：  Error:Invalid command androidUnityEditor.BuildPlayerWindow:BuildPlayerAndRun() CommandInvokationFailure: Unable to list">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/196189-9153d06c787e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://wolfxu.com/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/"/>
+  <link rel="canonical" href="http://wolfxu.com/2018/01/08/Unity编译时找不到AndroidSDK的问题/"/>
 
 
 
 
 
-  <title>如何为NTFS文件系统的移动硬盘划分一个Mac的分区 | Wolf Xu</title>
+  <title>Unity编译时找不到AndroidSDK的问题 | Unable to list target platforms | Wolf Xu</title>
   
 
 
@@ -235,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wolfxu.com/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/">
+    <link itemprop="mainEntityOfPage" href="http://wolfxu.com/2018/01/08/Unity编译时找不到AndroidSDK的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wolf Xu">
@@ -252,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何为NTFS文件系统的移动硬盘划分一个Mac的分区</h1>
+          <h1 class="post-title" itemprop="name headline">Unity编译时找不到AndroidSDK的问题 | Unable to list target platforms</h1>
         
 
         <div class="post-meta">
@@ -264,8 +266,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T14:14:16+08:00">
-                2018-01-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T18:12:29+08:00">
+                2018-01-08
               </time>
             
 
@@ -283,9 +285,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/08/Unity编译时找不到AndroidSDK的问题/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/08/Unity编译时找不到AndroidSDK的问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -313,25 +315,31 @@
       
 
       
-        <h3 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h3><p>事情是这样的，我准备编译android源码，但是我的MacPro只有256G的空间，而源码编译大概要100G左右的空间。于是，我从箱底翻出500G的硬盘。只有一个分区，NTFS文件系统的，编译源码需要Mac OS扩展（区分大小写，日志式）。但里面还有300多G的资料、软件、游戏之类的，直接格式化肯定不行，备份又麻烦。所以我准备在移动硬盘上划分一个新的分区，格式化成mac需要的格式。</p>
-<h3 id="2-压缩原有分区并创建Mac-OS-扩展分区"><a href="#2-压缩原有分区并创建Mac-OS-扩展分区" class="headerlink" title="2. 压缩原有分区并创建Mac OS 扩展分区"></a>2. 压缩原有分区并创建Mac OS 扩展分区</h3><h5 id="使用的工具"><a href="#使用的工具" class="headerlink" title="使用的工具"></a>使用的工具</h5><ul>
-<li>Windows自带的磁盘管理工具</li>
-<li>Mac自带的磁盘管理工具</li>
-</ul>
-<h5 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h5><ol>
-<li>利用Windows自带的磁盘管理工具，压缩移动硬盘上原有的分区。据说编译源码100G的空间够了，于是我压缩出了100G左右的空间。</li>
-<li>利用Windows自带的磁盘管理工具，创建新的分区（使用压缩出的空间）。这里可能因为我的移动硬盘原有的分区是NTFS的，所以无法在Mac上对移动硬盘进行分区，只能先在Windows上分区。</li>
-<li>利用Mac自带的磁盘管理工具，格式化新建的分区。<br><img src="http://upload-images.jianshu.io/upload_images/196189-39457ca875c263d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分区完成后" title="分区完成后"></li>
+        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在用 Unity 编译 Android 平台的应用时，遇到 Unable to list target platforms 的问题。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/196189-9153d06c787e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="错误提示"></p>
+<p>详细错误描述如下：</p>
+<blockquote>
+<p>Error:Invalid command android<br>UnityEditor.BuildPlayerWindow:BuildPlayerAndRun()</p>
+<p>CommandInvokationFailure: Unable to list target platforms. Please make sure the android sdk path is correct. See the Console for more details.<br>C:\Program Files\Java\jdk1.8.0_91\bin\java.exe -Xmx2048M -Dcom.android.sdkmanager.toolsdir=”D:/Android/sdk\tools” -Dfile.encoding=UTF8 -jar “D:\Program Files\Unity\Editor\Data\PlaybackEngines\AndroidPlayer/Tools\sdktools.jar” -<br>stderr[<br>Error:Invalid command android<br>]<br>stdout[<br>]<br>UnityEditor.Android.Command.Run (System.Diagnostics.ProcessStartInfo psi, UnityEditor.Android.WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg)<br>UnityEditor.Android.AndroidSDKTools.RunCommandInternal (System.String javaExe, System.String sdkToolsDir, System.String[] sdkToolCommand, Int32 memoryMB, System.String workingdir, UnityEditor.Android.WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg)<br>UnityEditor.Android.AndroidSDKTools.RunCommandSafe (System.String javaExe, System.String sdkToolsDir, System.String[] sdkToolCommand, Int32 memoryMB, System.String workingdir, UnityEditor.Android.WaitingForProcessToExit waitingForProcessToExit, System.String errorMsg)<br>UnityEditor.BuildPlayerWindow:BuildPlayerAndRun()</p>
+</blockquote>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><h3 id="原因简单描述"><a href="#原因简单描述" class="headerlink" title="原因简单描述"></a>原因简单描述</h3><p>Unity 在编译时会调用 Android SDK tools 中的 android 命令，而在新版本的 Android SDK tools 中，android这个命令已经废弃了，导致 Unity 无法正常编译。我的 Android SDK tools 版本是 25.3.1 。</p>
+<h3 id="找到问题原因的过程"><a href="#找到问题原因的过程" class="headerlink" title="找到问题原因的过程"></a>找到问题原因的过程</h3><p>经过再三确认，我配置的 Android SDK 是没问题的。<br><img src="http://upload-images.jianshu.io/upload_images/196189-5b2c7c2750b37566.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SDK设置" title="SDK设置"><br>后来我注意到错误描述中有提到“无效的命令 android ”，所以我尝试直接调用 android 这个命令，看是不是有问题。</p>
+<blockquote>
+<p>Error:Invalid command android</p>
+</blockquote>
+<p>android 命令是 AndroidSDK 中 tools 目录下的 android.bat 。直接调用，发现这个命令已经废弃了。</p>
+<blockquote>
+<p>The “android” command is no longer available.<br>For manual SDK and AVD management, please use Android Studio.<br>For command-line tools, use<br>tools\bin\sdkmanager.bat and tools\bin\avdmanager.bat</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>知道了原因，问题就好解决了。</p>
+<ol>
+<li>从官网下载一个旧版本的 Android SDK tools 。<a href="https://dl.google.com/android/repository/tools_r25.2.3-windows.zip" target="_blank" rel="noopener">tools_r25.2.3-windows.zip</a>。</li>
+<li>把原来 SDK 目录下的 tools 备份一下。我是把它重命名成 tools-25.3.1 。</li>
+<li>把下载好的旧版本的 tools 解压到 SDK 目录下。</li>
+<li>再在 Unity 中重新编译，问题已经解决了。</li>
 </ol>
-<h3 id="3-扩展MacOSX分区的大小"><a href="#3-扩展MacOSX分区的大小" class="headerlink" title="3. 扩展MacOSX分区的大小"></a>3. 扩展MacOSX分区的大小</h3><p>分区完成之后，下载Android源码进行编译，艰难绕过各种坑之后，在编译到80%时失败了，空间不足！！！于是只能想办法再给MacOSX分区扩展一点空间。</p>
-<h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><ul>
-<li>Windows自带的磁盘管理工具</li>
-<li>iPartition（Mac上的一个第三方磁盘分区工具）</li>
-</ul>
-<h5 id="具体步骤-1"><a href="#具体步骤-1" class="headerlink" title="具体步骤"></a>具体步骤</h5><ol>
-<li>利用Windows自带的磁盘管理工具，压缩NTFS分区的空间。空间挤挤总是有的，又压缩出50G空间。</li>
-<li>利用iPartition工具，把压缩出的50G空间合并到MacOSX分区中。这一步尝试了Windows的磁盘管理工具、Mac的磁盘管理工具还有Windows上的分区助手都没法搞。最后用iPartition轻松搞定。<br><img src="http://upload-images.jianshu.io/upload_images/196189-3729bcfa549834ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="空间扩展完成后" title="空间扩展完成后"></li>
-</ol>
+<p>对比了一下两个版本的 tools，差别真的很大，少了很多东西。比如，做.9图的 draw9patch 就不知道去哪里了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/196189-287b910ccfd1f58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tools 25.2.3 vs 25.3.1" title="tools 25.2.3 vs 25.3.1"></p>
 
       
     </div>
@@ -347,6 +355,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Unity/" rel="tag"># Unity</a>
+          
+        </div>
+      
 
       
       
@@ -356,14 +372,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/08/在简书上用Markdown画流程图/" rel="next" title="在简书上用Markdown画流程图">
+                <i class="fa fa-chevron-left"></i> 在简书上用Markdown画流程图
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/08/Unity开发中的常用操作和注意事项/" rel="prev" title="Unity开发中的常用操作和注意事项">
-                Unity开发中的常用操作和注意事项 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/08/ThreadPoolExecutor-中的-ctl-变量/" rel="prev" title="ThreadPoolExecutor 中的 ctl 变量">
+                ThreadPoolExecutor 中的 ctl 变量 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -497,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-背景"><span class="nav-number">1.</span> <span class="nav-text">1. 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-压缩原有分区并创建Mac-OS-扩展分区"><span class="nav-number">2.</span> <span class="nav-text">2. 压缩原有分区并创建Mac OS 扩展分区</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用的工具"><span class="nav-number">2.0.1.</span> <span class="nav-text">使用的工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.0.2.</span> <span class="nav-text">具体步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-扩展MacOSX分区的大小"><span class="nav-number">3.</span> <span class="nav-text">3. 扩展MacOSX分区的大小</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#工具"><span class="nav-number">3.0.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体步骤-1"><span class="nav-number">3.0.2.</span> <span class="nav-text">具体步骤</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因简单描述"><span class="nav-number">2.1.</span> <span class="nav-text">原因简单描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找到问题原因的过程"><span class="nav-number">2.2.</span> <span class="nav-text">找到问题原因的过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
@@ -669,9 +689,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://wolfxu.com/2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/';
-          this.page.identifier = '2018/01/03/如何为NTFS文件系统的移动硬盘划分一个Mac的分区/';
-          this.page.title = '如何为NTFS文件系统的移动硬盘划分一个Mac的分区';
+          this.page.url = 'http://wolfxu.com/2018/01/08/Unity编译时找不到AndroidSDK的问题/';
+          this.page.identifier = '2018/01/08/Unity编译时找不到AndroidSDK的问题/';
+          this.page.title = 'Unity编译时找不到AndroidSDK的问题 | Unable to list target platforms';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://wolfxu.disqus.com/embed.js';
