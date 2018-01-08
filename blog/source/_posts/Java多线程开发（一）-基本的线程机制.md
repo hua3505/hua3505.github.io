@@ -217,7 +217,7 @@ public ThreadPoolExecutor(int corePoolSize,
 
 　　理解了这些参数，就很容易理解 Executors 中创建的几种线程池。当这几种线程池都不能满足需求的时候，我们直接可以通过 ThreadPoolExecutor 的构造方法来创建一个合适的线程池。那么，ThreadPoolExecutor 是怎么调度线程来执行任务的呢？
 
-　　从 execute() 方法入手去理解。其中 ctl 只是一个原子操作的 int 型（AtomicInteger类）变量，但可以同时保存线程池状态和线程数量。我在另一篇文章中专门分析了这个 [ctl 的实现](http://www.jianshu.com/p/66fd50c37326)。
+　　从 execute() 方法入手去理解。其中 ctl 只是一个原子操作的 int 型（AtomicInteger类）变量，但可以同时保存线程池状态和线程数量。我在另一篇文章中专门分析了这个 [ctl 的实现](http://wolfxu.com/2018/01/08/ThreadPoolExecutor-%E4%B8%AD%E7%9A%84-ctl-%E5%8F%98%E9%87%8F/)。
 
 ```java
 public void execute(Runnable command) {
@@ -608,4 +608,4 @@ public class ThreadGroup {
 　　看到这里，我产生了一个疑问，按照这种机制，没捕获的异常最多是打个错误信息，而不会导致程序 crash 。那么，为什么在 android 中，异常会导致应用 crash 呢。原来，Android 在所有进程启动时，都给 Thread 设置了 defaultUncaughtExceptionHandler ，遇到异常时会让应用 crash 。想了解更多内容，请看这篇文章 [理解Android Crash处理流程](http://gityuan.com/2016/06/24/app-crash/) 。
 
 ### 12. 结语
-　　这篇文章是我阅读《 Thinking In Java 》书中并发一章第2节，并结合源码以及测试的学习记录。对 Java 基础线程机制的学习到此就告一段落了。下一篇文章学习多线程开发的两个主要问题的解决：[Java多线程开发（二）| 多线程的竞争与协作](http://www.jianshu.com/p/9e3f0371f737)。
+　　这篇文章是我阅读《 Thinking In Java 》书中并发一章第2节，并结合源码以及测试的学习记录。对 Java 基础线程机制的学习到此就告一段落了。下一篇文章学习多线程开发的两个主要问题的解决：[Java多线程开发（二）| 多线程的竞争与协作](http://wolfxu.com/2018/01/08/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91%EF%BC%88%E4%BA%8C%EF%BC%89-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%AB%9E%E4%BA%89%E4%B8%8E%E5%8D%8F%E4%BD%9C/)。
