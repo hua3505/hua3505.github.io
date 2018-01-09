@@ -8,7 +8,7 @@ tags:
 ## 现象
 在用 Unity 编译 Android 平台的应用时，遇到 Unable to list target platforms 的问题。
 
-![错误提示](http://upload-images.jianshu.io/upload_images/196189-9153d06c787e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![错误提示](http://upload-images.jianshu.io/upload_images/196189-9153d06c787e7c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)<!-- more -->
 
 详细错误描述如下：
 > Error:Invalid command android

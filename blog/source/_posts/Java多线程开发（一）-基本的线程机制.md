@@ -38,7 +38,7 @@ public static void main(String[] args) {
 >
 > main
 > main
-
+<!-- more -->
 ### 2. Thread类 
 
 ​	要让任务在新的线程执行，最直接的方法是用它来创建一个 Thread 类。这里用 Thinking in Java 书上的例子来展示 Thread 类的使用。

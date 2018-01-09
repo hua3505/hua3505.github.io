@@ -12,7 +12,7 @@ tags:
 聚焦到物体：选中物体后按F；或者在hierarchy中双击要聚焦的物体
 
 ### 编辑器布局切换
-在编辑器上方菜单栏的Windows->Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存。预设的里面我用的比较多的是*Default*和*2 by 3*。Default布局是中间上方有一个很大的场景窗口，可以通过标签页切换到Game窗口；2 by 3是左边分成上下两块，分别显示场景窗口和Game窗口。
+在编辑器上方菜单栏的Windows->Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存。预设的里面我用的比较多的是*Default*和*2 by 3*。Default布局是中间上方有一个很大的场景窗口，可以通过标签页切换到Game窗口；2 by 3是左边分成上下两块，分别显示场景窗口和Game窗口。<!-- more -->
 
 ### VisualStudio
 首先要安装Visual Studio Tools for Unity。Unity在安装的时候就在VisualStudio中安装了这个插件，如果没有的话可以在VS的插件管理器（Tools->Extensions and Updates）中下载安装，或者去[msdn](https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=tools&f%5B1%5D.Type=Tag&f%5B1%5D.Value=unity%203D%20script%20c%23%20debug%20breakpoint)上下载。
