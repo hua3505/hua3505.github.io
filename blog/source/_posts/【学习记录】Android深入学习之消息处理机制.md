@@ -11,7 +11,7 @@ tags:
 
 # 概述
 主要涉及四个类：Looper、Handler、Message、MessageQueue。
-Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。
+Message是消息对象，MessageQueue是消息队列。Looper负责创建消息队列，并进入无限循环不断从消息队列中读取消息。而Handler负责发送消息到消息队列，以及消息的回调处理。<!-- more -->
 
 # Looper
 ### 1. Looper类的作用

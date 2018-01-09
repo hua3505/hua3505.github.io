@@ -5,7 +5,7 @@ tags:
 - Android
 ---
 ## Instapaper实现稍后阅读
-　　当在网上看到一篇好的文章时，而又没时间去读完它时，该怎么办呢。以前我会这样做：保持这个标签页不关闭；或者添加到浏览器的书签里；或者通过Evernote来记录文章的链接。但是常常不小心就把保留的标签页关了，而收藏到浏览器或者Evernote的文章也常常不记得回头去看。为了解决这个问题，我用了Instapaper。
+　　当在网上看到一篇好的文章时，而又没时间去读完它时，该怎么办呢。以前我会这样做：保持这个标签页不关闭；或者添加到浏览器的书签里；或者通过Evernote来记录文章的链接。但是常常不小心就把保留的标签页关了，而收藏到浏览器或者Evernote的文章也常常不记得回头去看。为了解决这个问题，我用了Instapaper。<!-- more -->
 ![Instapaper移动端](http://upload-images.jianshu.io/upload_images/196189-1ef86684bc2e7323.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/465 "Instapaper移动端")
 　　Instapaper的界面非常简洁，而且纯粹，非常好的聚焦在阅读文章上。这一点比Pocket要好。PC网页端，看到好的文章时，点一下浏览器插件或者Instapaper的书签就直接保存了。Android端，通过系统的分享选择Instapaper就可以保存文章。
 
