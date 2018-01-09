@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。 为什么要研究一个 int 变量其实一开始，我是在看 execute 方法的实现…… 12345678910111213141516171819202122public void execute(Runnable command">
+<meta name="description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。">
 <meta name="keywords" content="Android,源码解析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ThreadPoolExecutor 中的 ctl 变量">
 <meta property="og:url" content="http://wolfxu.com/2018/01/08/ThreadPoolExecutor-中的-ctl-变量/index.html">
 <meta property="og:site_name" content="Wolf Xu">
-<meta property="og:description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。 为什么要研究一个 int 变量其实一开始，我是在看 execute 方法的实现…… 12345678910111213141516171819202122public void execute(Runnable command">
+<meta property="og:description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-6a737cbcc0672c52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-08T10:21:05.345Z">
+<meta property="og:updated_time" content="2018-01-09T08:17:27.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ThreadPoolExecutor 中的 ctl 变量">
-<meta name="twitter:description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。 为什么要研究一个 int 变量其实一开始，我是在看 execute 方法的实现…… 12345678910111213141516171819202122public void execute(Runnable command">
+<meta name="twitter:description" content="最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/196189-6a737cbcc0672c52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -325,7 +325,7 @@
       
 
       
-        <p>最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。</p>
+        <p>最近在看 Java 线程池的实现，发现里面有一个 int 类型的成员变量，同时表示线程池运行状态和线程数量。理解了一下这块的实现，挺有意思的，所以单独拿出来跟大家分享一下。<a id="more"></a></p>
 <h3 id="为什么要研究一个-int-变量"><a href="#为什么要研究一个-int-变量" class="headerlink" title="为什么要研究一个 int 变量"></a>为什么要研究一个 int 变量</h3><p>其实一开始，我是在看 execute 方法的实现……</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (command == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">    <span class="comment">// 这里 c 用来获取线程数量</span></span><br><span class="line">    <span class="keyword">if</span> (workerCountOf(c) &lt; corePoolSize) &#123;</span><br><span class="line">        <span class="keyword">if</span> (addWorker(command, <span class="keyword">true</span>))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        c = ctl.get();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里 c 用来判断线程池是否处于运行状态</span></span><br><span class="line">    <span class="keyword">if</span> (isRunning(c) &amp;&amp; workQueue.offer(command)) &#123;</span><br><span class="line">        <span class="keyword">int</span> recheck = ctl.get();</span><br><span class="line">        <span class="keyword">if</span> (!isRunning(recheck) &amp;&amp; remove(command))</span><br><span class="line">            reject(command);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (workerCountOf(recheck) == <span class="number">0</span>)</span><br><span class="line">            addWorker(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!addWorker(command, <span class="keyword">false</span>))</span><br><span class="line">        reject(command);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我注意到从 ctl（AtomicInteger类型） 中取出来的这个 int 变量 c，它一会儿用来获取线程数量，一会儿又用来判断线程池是否处于运行状态。我很好奇，于是点进去看了这两个方法的实现。</p>

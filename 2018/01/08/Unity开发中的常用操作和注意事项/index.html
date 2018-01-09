@@ -90,7 +90,7 @@
 <meta property="og:description" content="场景视角变换平移：鼠标切换到手型，按下左键拖动缩放：鼠标滚轮滚动；或者按下alt+鼠标右键，然后移动鼠标围绕观察点旋转：按下alt+鼠标左键，然后移动鼠标观察者旋转：按下鼠标右键，然后移动鼠标聚焦到物体：选中物体后按F；或者在hierarchy中双击要聚焦的物体 编辑器布局切换在编辑器上方菜单栏的Windows-&amp;gt;Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/196189-715f1865280266cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-08T09:09:56.317Z">
+<meta property="og:updated_time" content="2018-01-09T08:24:01.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity开发中的常用操作和注意事项">
 <meta name="twitter:description" content="场景视角变换平移：鼠标切换到手型，按下左键拖动缩放：鼠标滚轮滚动；或者按下alt+鼠标右键，然后移动鼠标围绕观察点旋转：按下alt+鼠标左键，然后移动鼠标观察者旋转：按下鼠标右键，然后移动鼠标聚焦到物体：选中物体后按F；或者在hierarchy中双击要聚焦的物体 编辑器布局切换在编辑器上方菜单栏的Windows-&amp;gt;Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存">
@@ -326,7 +326,7 @@
 
       
         <h3 id="场景视角变换"><a href="#场景视角变换" class="headerlink" title="场景视角变换"></a>场景视角变换</h3><p>平移：鼠标切换到手型，按下左键拖动<br>缩放：鼠标滚轮滚动；或者按下alt+鼠标右键，然后移动鼠标<br>围绕观察点旋转：按下alt+鼠标左键，然后移动鼠标<br>观察者旋转：按下鼠标右键，然后移动鼠标<br>聚焦到物体：选中物体后按F；或者在hierarchy中双击要聚焦的物体</p>
-<h3 id="编辑器布局切换"><a href="#编辑器布局切换" class="headerlink" title="编辑器布局切换"></a>编辑器布局切换</h3><p>在编辑器上方菜单栏的Windows-&gt;Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存。预设的里面我用的比较多的是<em>Default</em>和<em>2 by 3</em>。Default布局是中间上方有一个很大的场景窗口，可以通过标签页切换到Game窗口；2 by 3是左边分成上下两块，分别显示场景窗口和Game窗口。</p>
+<h3 id="编辑器布局切换"><a href="#编辑器布局切换" class="headerlink" title="编辑器布局切换"></a>编辑器布局切换</h3><p>在编辑器上方菜单栏的Windows-&gt;Layouts可以切换不同的布局。有预设的一些布局，也可以自己修改布局然后保存。预设的里面我用的比较多的是<em>Default</em>和<em>2 by 3</em>。Default布局是中间上方有一个很大的场景窗口，可以通过标签页切换到Game窗口；2 by 3是左边分成上下两块，分别显示场景窗口和Game窗口。<a id="more"></a></p>
 <h3 id="VisualStudio"><a href="#VisualStudio" class="headerlink" title="VisualStudio"></a>VisualStudio</h3><p>首先要安装Visual Studio Tools for Unity。Unity在安装的时候就在VisualStudio中安装了这个插件，如果没有的话可以在VS的插件管理器（Tools-&gt;Extensions and Updates）中下载安装，或者去<a href="https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=RootCategory&amp;f%5B0%5D.Value=tools&amp;f%5B1%5D.Type=Tag&amp;f%5B1%5D.Value=unity%203D%20script%20c%23%20debug%20breakpoint" target="_blank" rel="noopener">msdn</a>上下载。</p>
 <p>查看unity文档：Help-&gt;Unity API Reference，默认快捷键是 Ctrl + Alt +M,Ctrl + H。会在VS中打开Unity的在线文档，并查找当前选中的内容。<br>快速实现MonoBehaviour中的方法：鼠标右键-&gt;Implement MonoBehaviours(快捷键：Ctrl + Shift + M)。列出MonoBehaviour中所有可实现的方法，通过勾选添加。<br>查看MonoBehaviour中的方法：鼠标右键-&gt;Quick MonoBehaviours（快捷键：Ctrl+shift +Q）。查找MonoBehaviour中可实现的方法。<br>调试脚本：点击Attach to Unity，或者直接按F5连接到Unity上，在Unity中运行游戏，就可以开始断点调试了。</p>
 <h3 id="注意：不要在play模式下进行编辑"><a href="#注意：不要在play模式下进行编辑" class="headerlink" title="注意：不要在play模式下进行编辑"></a>注意：不要在play模式下进行编辑</h3><p>play模式下场景中的修改（场景中创建物体、修改物体属性等）都是临时的，退出play模式时就会还原。play模式下只适合用来做测试性的修改，而不应该在play模式下编辑。<br>问题来了，如何避免不小心在play模式下编辑的情况？<br>可以让Unity在play模式下显示不一样的颜色来提醒自己。在Preference的Colors中修改Playmode tint即可。效果见下图。</p>
