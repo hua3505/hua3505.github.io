@@ -80,3 +80,9 @@ deploy:
   type: git
   repo: git@github.com:hua3505/hua3505.github.io.git
   branch: master
+
+algolia:
+  applicationID: 'YNC8AWR90E'
+  apiKey: 'dd0477ebc498a4466b2d70ca4a7b26ae'
+  indexName: 'myblog'
+  chunkSize: 5000
