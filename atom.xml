@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wolfxu.com/"/>
-  <updated>2018-01-09T08:02:11.458Z</updated>
+  <updated>2018-01-17T07:24:57.943Z</updated>
   <id>http://wolfxu.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人博客搭建记录</title>
+    <link href="http://wolfxu.com/2018/01/17/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/"/>
+    <id>http://wolfxu.com/2018/01/17/个人博客搭建记录/</id>
+    <published>2018-01-17T07:19:49.000Z</published>
+    <updated>2018-01-17T07:24:57.943Z</updated>
+    
+    <content type="html"><![CDATA[<p>2017年末，买了个人域名wolfxu.com，于是搭建了自己的个人博客。2018年初，逐步完善了博客的各种配置，从简书同步了之前的文章过来。</p><h1 id="搭建记录"><a href="#搭建记录" class="headerlink" title="搭建记录"></a>搭建记录</h1><ol><li>购买域名。在阿里云购买个人域名wolfxu.com，很幸运的有.com域名，而且不贵。一开始也纠结选什么后缀好，看了知乎上的一些回答，觉得还是.com好，.com是最自然、最好记的。至于.com原意是表示公司……这个不重要。<a id="more"></a></li><li>选择建站方案。不想买服务器，所以用github pages做静态博客。从主流的静态博客框架里面选择了hexo，原因是名字看着顺眼。而且据说编译速度比jekyll快。</li><li>在github创建用于存放静态博客的仓库。仓库名称必须是”用户名.github.io”，起其他名称是无效的。创建好对应的仓库后，就可以通过”用户名.github.io”这个地址来访问了。</li><li>绑定自定义域名。通过阿里云的dns解析，给wolfxu.com和www.wolfxu.com添加A记录到github pages的ip，有两个：192.30.252.153、192.30.252.154。然后在github的仓库下创建一个CNAME文件，写上wolfxu.com。这里写wolfxu.com和www.wolfxu.com都行；写wolfxu.com的话，访问www.wolfxu.com时，会被重定向到wolfxu.com；反过来的话，就重定向到www.wolfxu.com。通过我们的自定义域名访问时，实际上是访问github pages的服务器，github pages根据CNAME文件中配置的域名来进行匹配，展示相应仓库的内容。</li><li>安装hexo。先安装Node.js（我直接用homebrew安装的Node.js），然后安装hexo。</li><li>hexo初始化。hexo init 创建hexo需要的文件，然后npm install安装依赖的插件。我新建了一个hexo分支，用于存放源文件，把master留着用于发布。这样就能直接用hua3505.github.io的仓库管理源文件，不需要另外建一个仓库。</li><li>修改配置。修改了url、author等。</li><li>试试本地服务器。需要安装hexo-server插件，npm install hexo-server —save。这里save要加上，这样插件信息会被加到package.json中，方便多台电脑之间同步。在其他电脑上，从github拉取更新后，就可以看到缺少的插件，直接用npm install安装。hexo server（缩写hexo s），可以启动本地的服务，用于预览博客效果。修改内容后，不需要重启本地服务，只要刷新一下就可以看到修改的效果。</li><li>生成静态博客。hexo generate（缩写hexo g），所有生成的文件在public目录下。</li><li>部署。用git来进行部署。配置好部署的方式，仓库地址，分支等。安装hexo-deployer-git插件。执行hexo deploy部署。可以把生成和部署的命令合并，hexo generate -deploy（缩写hexo g -d），反过来也行hexo d -g。</li><li>解决hexo部署后，CNAME文件被删除的问题。hexo部署到master分支下，把原来的文件都删除了，CNAME被删，导致无法用自定义域名访问。解决方案是，把CNAME文件放到source目录下，这个文件下的一般文件在生成时，会被直接拷贝。具体可以看hexo关于<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">“资源文件夹”</a>的文档。</li><li>更换主题。一开始试了Aath，不好看。换了Next，简单大方，好看，而且功能很完善。折腾了一下主题配置。</li><li>从简书迁移文章过来。有些文章内有链接到我的其它文章，改成链接到wolfxu.com上的。另外遇到图片标注没显示，生成时报错等问题，在后面单独提一下。</li><li>配置文章阅读数、评论系统、站内搜索、公益404、首页显示摘要等。站内搜索用的是Algolia，发现Next的文档上写的hexo配置项中少了apiKey，应该有applicationID、apiKey、indexName三项。</li></ol><h1 id="hexo与简书的markdown的区别"><a href="#hexo与简书的markdown的区别" class="headerlink" title="hexo与简书的markdown的区别"></a>hexo与简书的markdown的区别</h1><ol><li><p>图片标注。对于下面这样的图片引用，简书直接取方括号中的文字作为图片标注，而在hexo上，需要用后面双引号里的才行。应该是hexo的做法比较规范，前面的应该是alt text，后面的才是图片标注。为了在两边显示效果能保持一致，要写全，而且两处文字应该一样。</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Snip设置</span>](<span class="link">http://xxx "Snip设置"</span>)</span><br></pre></td></tr></table></figure></li><li><p>hexo似乎更为严格。无序列表符号”-“前有空格，生成时直接报错了。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2017年末，买了个人域名wolfxu.com，于是搭建了自己的个人博客。2018年初，逐步完善了博客的各种配置，从简书同步了之前的文章过来。&lt;/p&gt;
+&lt;h1 id=&quot;搭建记录&quot;&gt;&lt;a href=&quot;#搭建记录&quot; class=&quot;headerlink&quot; title=&quot;搭建记录&quot;&gt;&lt;/a&gt;搭建记录&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;购买域名。在阿里云购买个人域名wolfxu.com，很幸运的有.com域名，而且不贵。一开始也纠结选什么后缀好，看了知乎上的一些回答，觉得还是.com好，.com是最自然、最好记的。至于.com原意是表示公司……这个不重要。
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Java多线程开发（二）| 多线程的竞争与协作</title>
