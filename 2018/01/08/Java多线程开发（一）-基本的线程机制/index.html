@@ -313,7 +313,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-09T16:07:35+08:00">2018-01-09</time>
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-12T16:37:34+08:00">2018-03-12</time>
             
           </span>
 
@@ -425,7 +425,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="6-优先级"><a href="#6-优先级" class="headerlink" title="6. 优先级"></a>6. 优先级</h3><p>　　线程的优先级表示线程的重要性，线程调度器倾向于让优先级高的线程先执行。可以用 Thread 的 getPriority() 方法读取线程的优先级，通过 setPriority() 方法可以修改线程的优先级。目前 Java 中的线程是映射到底层操作系统的线程，通过底层操作系统来实现的。所以优先级也被映射到底层操作系统中的线程优先级。但是，不同操作系统的优先级级别数量、策略都有所不同，Java 中的 10 个优先级并不能映射得很好。Thinking in Java 书上建议，调整优先级时，只使用 MAX_PRIORITY、NORM_PRIORITY 和 MIN_PRIORITY 三种级别。由于不同操作系统的线程调度策略不一样，因此我们在开发时不应该依赖于线程的执行顺序。</p>
 <h3 id="7-让步"><a href="#7-让步" class="headerlink" title="7. 让步"></a>7. 让步</h3><p>　　通过 Thread 的 yield() 方法，可以给线程调度器一个建议：当前线程的工作告一段落，可以让出 CPU 给其他线程使用了。当然，这只是一个建议，没有任何机制能保证它一定被采纳。所以，我们在开发时也不应该依赖于 yield() 方法。</p>
-<h3 id="8-后台线程"><a href="#8-后台线程" class="headerlink" title="8. 后台线程"></a>8. 后台线程</h3><p>　　后台（daemon）线程，也有就守护线程的。关于后台线程需要了解的主要有三点：</p>
+<h3 id="8-后台线程"><a href="#8-后台线程" class="headerlink" title="8. 后台线程"></a>8. 后台线程</h3><p>　　后台（daemon）线程，也有叫守护线程的。关于后台线程需要了解的主要有三点：</p>
 <ul>
 <li>当所有非后台线程结束，程序也就会结束，所有的后台进程都被杀死。因此，不要把必须执行的任务放到后台线程中。</li>
 <li>通过 setDaemon(true) 可以把线程标记为后台线程。这个方法要在线程开始运行之前调用，不然会抛出异常。</li>
