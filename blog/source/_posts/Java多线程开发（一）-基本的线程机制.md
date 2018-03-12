@@ -380,7 +380,7 @@ public static void sleep(long millis, int nanos) throws InterruptedException {..
 
 ### 8. 后台线程
 
-　　后台（daemon）线程，也有就守护线程的。关于后台线程需要了解的主要有三点：
+　　后台（daemon）线程，也有叫守护线程的。关于后台线程需要了解的主要有三点：
 
 - 当所有非后台线程结束，程序也就会结束，所有的后台进程都被杀死。因此，不要把必须执行的任务放到后台线程中。
 - 通过 setDaemon(true) 可以把线程标记为后台线程。这个方法要在线程开始运行之前调用，不然会抛出异常。
